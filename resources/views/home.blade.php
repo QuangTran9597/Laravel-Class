@@ -39,7 +39,12 @@
 
           @yield('content')
 
+        @if(session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
 
+        </div>
+        @endif
         <footer>
             <div class="footer-content">
                 <h3>English For Children</h3>
