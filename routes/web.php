@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 
 /*
@@ -33,6 +35,16 @@ Route::get('index', [HomeController::class, 'index'])->name('index')->middleware
 
 Route::get('create',[HomeController::class, 'create'])->name('create');
 
-Route::post('login', [LoginController::class, 'login'])->name('post.login');
+Route::post('login', [LoginController::class, 'login'])->middleware(['checkrole'])->name('post.login');
 
-Route::get('check',[LoginController::class, 'create'])->middleware(['checklogin', 'checkrole'])->name('check');
+Route::get('check', [LoginController::class, 'create'])->middleware(['checklogin', 'checkrole'])->name('check');
+
+Route::get('/', function(){
+    $user = DB::table('users')->get();
+    dd($user);
+    return view('welcome');
+});
+
+Route::get('template', [HomeController::class, 'template'])->name('template');
+
+

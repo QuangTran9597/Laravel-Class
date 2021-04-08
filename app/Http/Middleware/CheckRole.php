@@ -16,11 +16,11 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if( $request->query('role')==='admin'){
+        dd($request->input('role'));
+        if ($request->query('role') === '1') {
             return $next($request);
         }
-        return Redirect('');
 
+        return redirect('home');
     }
 }

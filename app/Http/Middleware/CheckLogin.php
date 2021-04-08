@@ -15,11 +15,12 @@ class CheckLogin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next )
+    public function handle(Request $request, Closure $next)
     {
-        if($request ->has('token')){
+        if ($request->has('token')) {
             return $next($request);
         }
+
         return redirect('home');
     }
 }
