@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::get('welcome/{name}',[HomeController::class,'welcome']);
 
-Route::get('home', [HomeController::class, 'login'])->name('home');
+// Route::get('home', [HomeController::class, 'login'])->name('home');
 
 Route::get('index', [HomeController::class, 'index'])->name('index')->middleware('checktoken');
 
@@ -46,5 +46,31 @@ Route::get('/', function(){
 });
 
 Route::get('template', [HomeController::class, 'template'])->name('template');
+
+
+
+
+// Bài tập Blade Tempalte
+
+Route::get('portfolio', function () {
+    return view('portfolio');
+});
+
+Route::get('contact', function () {
+    return view('contact');
+});
+
+Route::get('about', function () {
+    return view('about');
+});
+
+Route::get('team', function () {
+    return view('team');
+});
+
+Route::get('services', function () {
+    return view('services');
+});
+
 
 
