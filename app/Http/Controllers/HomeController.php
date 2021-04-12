@@ -28,6 +28,13 @@ class HomeController extends Controller
        return view('blog', ['posts' => $posts]);
    }
 
-
+   public function portfolio(){
+       $name = [
+           'This is Portfolio',
+           'This is Portfolio 1',
+           'This is Portfolio 2'
+       ];
+       return view('portfolio' , ['name' =>$name]);
+   }
 
 }

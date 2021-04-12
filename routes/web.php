@@ -52,24 +52,22 @@ Route::get('template', [HomeController::class, 'template'])->name('template');
 
 // Bài tập Blade Tempalte
 
-Route::get('portfolio', function () {
-    return view('portfolio');
-});
+Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 
 Route::get('contact', function () {
-    return view('contact');
+    return view('contact', ['name' =>'CONTACT US']);
 });
 
 Route::get('about', function () {
-    return view('about');
+    return view('about', ['name'=>'ABOUT']);
 });
 
 Route::get('team', function () {
-    return view('team');
+    return view('team',['name'=>'TEAM']);
 });
 
 Route::get('services', function () {
-    return view('services');
+    return view('services',['name'=>'SERVICES']);
 });
 
 

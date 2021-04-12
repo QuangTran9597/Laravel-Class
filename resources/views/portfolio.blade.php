@@ -4,10 +4,14 @@
 @section('portfolio')
 <section class="page-section bg-light" id="portfolio">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
+
+                    @foreach ($name as $por )
+                    <div class="text-center">
+                        <h2 class="section-heading text-uppercase">{{$por}}</h2>
+                        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    </div>
+                    @endforeach
+               
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
@@ -186,5 +190,5 @@
                 </div>
             </div>
         </div>
-        
+
 @endsection
