@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>@yield('title')</title>
+
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>Blog</title>
         <link rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}" />
 
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -27,11 +29,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/posts/create">Create Data</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/posts">Update Data</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/posts">Show Data</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -44,36 +45,18 @@
                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
             </div>
         </header>
-        <!-- Services-->
-        @yield('services')
-        <!-- Portfolio Grid-->
-        @yield('portfolio')
-        <!-- About-->
-        @yield('about')
-        <!-- Team-->
-        @yield('team')
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/designmodo.jpg" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/themeforest.jpg" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/creative-market.jpg" alt="" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Contact-->
-        @yield('contact')
-        <!-- Footer-->
+        @if(session('thongbao'))
+         <span class="notification correct"
+         style="width: 240px; color:darkcyan; ">
+
+            <h5>  {{session('thongbao')}}</h5>
+
+        </span>
+        @endif
+
+        @yield('content')
+
+
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">

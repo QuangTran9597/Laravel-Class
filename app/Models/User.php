@@ -4,12 +4,24 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Scopes\EmailScope;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
+
+    // public static function boot() {
+    //     parent::boot();
+    //     static::addGlobalScope(new EmailScope());
+    // }
+
+    public function scopeEmail($query){
+        return $query->whereNull('email_verifyed_at');
+    }
 
     /**
      * The attributes that are mass assignable.

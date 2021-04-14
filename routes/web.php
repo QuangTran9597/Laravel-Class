@@ -7,7 +7,10 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Post;
+use App\Models\User;
+use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +72,25 @@ Route::get('team', function () {
 Route::get('services', function () {
     return view('services',['name'=>'SERVICES']);
 });
+
+Route::get('123', function () {
+    $user = Post::select()->where('id', 2)->join('Users')->where('name','user1')->get();
+    dd($user);
+});
+
+Route::get('111', function() {
+    //  User::withoutTrashed()->findOrFail(1);
+    // return ' xoa thanh cong';
+
+    $user = User::query()->email()->toSql();
+
+    dd($user);
+});
+
+
+Route::resource('posts', PostController::class);
+
+
 
 
 
